@@ -13,13 +13,14 @@ app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 io.on('connection', function (socket) {
     //Welcome a new user
     io.emit('welcome', 'A new user joined the chat');
-    socket.on('msg', function (data) {
+	socket.on('msg', function (data) {
         //New message
-	    var username = data.user;
-	    var message = data.msg;
-	io.emit('newmsg', {
-	user : username,
-	msg : message
+		var username = data.user;
+		var message = data.msg;
+		io.emit('newmsg', {
+		user : username,
+		msg : message
+		});
 	});
 });
 
