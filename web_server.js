@@ -12,7 +12,10 @@ app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
 io.on('connection', function (socket) {
     //Welcome a new user
-    io.emit('welcome', 'A new user joined the chat');
+	//Prompt user for username clientside
+	//Welcome user in chat with name
+	socket.on('name', function(name){
+	io.emit('welcome', name+' joined the chat');
 	socket.on('msg', function (data) {
         //New message
 		var username = data.user;
@@ -22,6 +25,8 @@ io.on('connection', function (socket) {
 		msg : message
 		});
 	});
+	})
+    
 });
 
 server.listen(process.env.PORT || 3000, () => {
