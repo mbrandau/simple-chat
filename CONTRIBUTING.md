@@ -1,17 +1,18 @@
-#How to Contribute
-Below are the instructions for making changes to simple chat. There are a few important guidlines we'd wish for you to follow.
+ 
+# Contribution Guide
+Below are the instructions for making changes to simple-chat. There are a few important guidelines we'd wish for you to follow.
 These will make it easier for you to contribute and for us to follow. Thank you for contributing!
 
-##Getting Started
-If you found a bug there are two options. If you have a solution, please follow these steps:
--Make sure you have a [Github account](https://github.com/join)
--Fork the repository
--Edit
--Create a pull request
-Language used: TypeScript/JavaScript
+## Getting Started
+If you've found a bug and don't have a solution, please [create an issue](https://github.com/mbrandau/simple-chat/issues/new).
+If you found a bug and have a solution, please follow these steps:
 
-If you've found a bug and don't have a solution, please create an issue on our page to notify us. 
+1.[Fork](https://github.com/mbrandau/simple-chat/fork) the repository
 
-##Making Changes
+2.Run `npm install && cd fronted && npm install` to install all required packages.
 
-##Submitting Changes
+## Making Changes
+Coming soon.
+
+## Submitting Changes
+Coming soon
