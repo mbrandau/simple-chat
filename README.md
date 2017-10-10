@@ -1,7 +1,7 @@
 # simple-chat
 A simple chat app using Angular and socket.io
 
-## Contribution Guidelines 
+## Contributing
 
 Please feel free to contribute to this project! Just follow our [contribution guide](CONTRIBUTING.md).
 
