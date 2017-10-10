@@ -1,3 +1,4 @@
+
 # Contribution Guide
 Below are the instructions for making changes to simple-chat. There are a few important guidelines we'd wish for you to follow.
 These will make it easier for you to contribute and for us to follow. Thank you for contributing!
