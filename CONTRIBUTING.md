@@ -8,7 +8,7 @@ If you've found a bug and don't have a solution or have a feature request, pleas
 
 Ensure the bug was not already reported by searching on GitHub under [Issues](https://github.com/mbrandau/simple-chat/issues).
 
-If you're unable to find an open issue addressing the problem, open a new one. Be sure to include a title and clear description, as much relevant information as possible and follow these steps if you already have a solution:
+If you're unable to find an open issue addressing the problem, open a new one. Be sure to include a title and clear description and as much relevant information as possible and follow these steps if you already have a solution:
 
 1. [Fork](https://github.com/mbrandau/simple-chat/fork) the repository
 
