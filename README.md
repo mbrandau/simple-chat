@@ -37,7 +37,7 @@ A simple chat app using Angular 4 and socket.io
 
 ### For development
 
-Please see our [contribution guide](CONTRIBUTING.md) for instructions on how to run the app for development.
+Please see our [contribution guide](CONTRIBUTING.md#testing-your-changes) for instructions on how to run the app for development.
 
 ## Contributing
 
