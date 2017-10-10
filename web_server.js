@@ -53,6 +53,11 @@ io.on('connection', function (socket) {
 	});
 });
 
+server.on('error', error => {
+	log.error(`Error while starting the server: ${error}`);
+});
+
 server.listen(process.env.PORT || 80, () => {
 	log.info(`Server is listening on port: ${server.address().port}`);
 });
+
