@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { StartComponent } from './start/start.component';
+import { SocketService } from "./socket.service";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { StartComponent } from './start/start.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
