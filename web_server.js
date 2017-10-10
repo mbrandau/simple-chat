@@ -6,8 +6,9 @@ const log = require('beautiful-logs')();
 
 const app = express();
 const server = http.Server(app);
-log.info('simple-chat is starting...')
 const io = socketIO(server);
+
+log.info('simple-chat is starting...');
 
 // Exposes the folder frontend
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
