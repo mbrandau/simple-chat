@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 const path = require('path');
+const log = require('beautiful-logs')();
 
 const app = express();
 const server = http.Server(app);
@@ -52,4 +53,5 @@ io.on('connection', function (socket) {
 
 server.listen(process.env.PORT || 80, () => {
 	console.log(`Server is listening on port: ${server.address().port}`);
+	log.info('simple-chat is starting...')
 });
