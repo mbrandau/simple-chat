@@ -1,9 +1,8 @@
 # simple-chat
 A simple chat app using Angular and socket.io
 
-# License
-[MIT LICENSE](LICENSE)
+## License
 
-Copyright (c) 2017 Maximilian Brandau
+This project is licensed under the terms of the [MIT License](LICENSE)
 
 
