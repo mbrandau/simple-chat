@@ -5,7 +5,7 @@ A simple chat app using Angular and socket.io
 
 [simple-chat Deployment](https://github.com/mbrandau/simple-chat/blob/master/frontend/README.md) 
 
-# Contribution Guidelines 
+## Contribution Guidelines 
 
 Please feel free to contribute to this project! Just follow our [contribution guide](CONTRIBUTING.md).
 
