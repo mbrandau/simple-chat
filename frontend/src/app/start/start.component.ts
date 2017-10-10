@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent implements OnInit {
-  title = 'Simple Chat';
 
   constructor() { }
 
