@@ -18,6 +18,8 @@ If you're unable to find an open issue addressing the problem, open a new one. B
 
 You can now change the things you want and test your changes.
 
+:exclamation: **NOTE:** Please choose meaningful commit messages.
+
 ## Testing your changes
 
 1. Build the frontend. There are two ways to do this:  
@@ -36,8 +38,6 @@ You can now change the things you want and test your changes.
 
 
 ## Submitting your changes
-
-:exclamation: **NOTE:** Please choose meaningful commit messages.
 
 1. Push the changes to your forked repository.
 2. [Create a pull request](https://github.com/mbrandau/simple-chat/compare) and choose a meaningful title and describe your changes in the description.
