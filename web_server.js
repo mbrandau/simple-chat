@@ -6,6 +6,7 @@ const log = require('beautiful-logs')();
 
 const app = express();
 const server = http.Server(app);
+log.info('simple-chat is starting...')
 const io = socketIO(server);
 
 // Exposes the folder frontend
@@ -52,5 +53,5 @@ io.on('connection', function (socket) {
 });
 
 server.listen(process.env.PORT || 80, () => {
-	log.info(`Server is listening on port: ${server.address().port}`)
+	log.info(`Server is listening on port: ${server.address().port}`);
 });
