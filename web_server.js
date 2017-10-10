@@ -11,22 +11,43 @@ const io = socketIO(server);
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
 io.on('connection', function (socket) {
-    //Welcome a new user
-	//Prompt user for username clientside
-	//Welcome user in chat with name
-	socket.on('name', function(name){
-	io.emit('welcome', name+' joined the chat');
-	socket.on('msg', function (data) {
-        //New message
-		var username = data.user;
-		var message = data.msg;
-		io.emit('newmsg', {
-		user : username,
-		msg : message
+	// Prompt user for username clientside
+	// Welcome user in chat with name
+	socket.on('name', name => {
+		// Save the username and join timestamp
+		socket.meta = {
+			username: name,
+			joinedAt: Date.now()
+		};
+		
+		// Emit a join event
+		io.emit('join', {
+			user: socket.meta.username,
+			time: socket.meta.joinedAt
+		});
+		
+		//New message
+		socket.on('msg', msg => {
+			const timestamp = Date.now();
+			// Send the message to all users
+			io.emit('msg', {
+				user : socket.meta.username,
+				msg : msg,
+				time: timestamp
+			});
+		});
+		
+		// Handle disconnect
+		socket.on('disconnect', reason => {
+			const timestamp = Date.now();
+			// Emit a leave event
+			io.emit('leave', {
+				user: socket.meta.username,
+				time: timestamp,
+				duration: timestamp - socket.meta.joinedAt
+			});
 		});
 	});
-	})
-    
 });
 
 server.listen(process.env.PORT || 3000, () => {
