@@ -1,5 +1,5 @@
 # simple-chat
-A simple chat app using Angular and socket.io
+A simple chat app using Angular 4 and socket.io
 
 ## Deploying the app
 
