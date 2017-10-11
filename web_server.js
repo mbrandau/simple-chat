@@ -29,6 +29,9 @@ io.on('connection', function(socket) {
       time: socket.meta.joinedAt
     });
 
+    //Log user join event
+    log.debug("User: " + socket.meta.username + " has joined.")
+
     //New message
     socket.on('msg', msg => {
       const timestamp = Date.now();
@@ -38,6 +41,8 @@ io.on('connection', function(socket) {
         msg: msg,
         time: timestamp
       });
+      //Log user send message event
+      log.debug("User: " + socket.meta.username + " has send a message: " + msg);
     });
 
     // Handle disconnect
@@ -49,6 +54,8 @@ io.on('connection', function(socket) {
         time: timestamp,
         duration: timestamp - socket.meta.joinedAt
       });
+      //Log user leave event
+      log.debug("User: " + socket.meta.username + " has left after " + timestamp - socket.meta.joinedAt);
     });
   });
 });
