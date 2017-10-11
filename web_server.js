@@ -54,7 +54,7 @@ io.on('connection', function(socket) {
 });
 
 server.on('error', error => {
-  log.err(`Error while starting the server: ${error}`);
+  log.err(`Error while starting the server`, error);
 });
 
 server.listen(process.env.PORT || 80, () => {
