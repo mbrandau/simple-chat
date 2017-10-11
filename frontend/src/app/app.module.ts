@@ -12,7 +12,8 @@ import { SocketService } from "./socket.service";
     StartComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [SocketService],
   bootstrap: [AppComponent]
