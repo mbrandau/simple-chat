@@ -38,7 +38,7 @@ io.on('connection', function(socket) {
     //New message
     socket.on('msg', msg => {
 
-      log.debug(`${name} (${socket.request.connection.remoteAddress}) has sent a new message`);
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has sent a new message: ${msg}`);
 
       const timestamp = Date.now();
       // Send the message to all users
@@ -52,7 +52,7 @@ io.on('connection', function(socket) {
     // Handle disconnect
     socket.on('disconnect', reason => {
 
-      log.debug(`${name} (${socket.request.connection.remoteAddress}) has been disconnected`);
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has been disconnected. Reason: ${reason}`);
 
       const timestamp = Date.now();
       // Emit a leave event
