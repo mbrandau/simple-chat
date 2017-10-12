@@ -55,7 +55,7 @@ io.on('connection', function(socket) {
         duration: timestamp - socket.meta.joinedAt
       });
       //Log user leave event
-      log.debug("User: " + socket.meta.username + " has left after " + timestamp - socket.meta.joinedAt);
+      log.debug("User: " + socket.meta.username + " has left after " + (timestamp - socket.meta.joinedAt));
     });
   });
 });
