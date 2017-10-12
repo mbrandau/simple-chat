@@ -14,9 +14,15 @@ log.info('simple-chat is starting...');
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
 io.on('connection', function(socket) {
+
+  log.debug('EVENT: connection, MSG: new connection has been established');
+
   // Prompt user for username clientside
   // Welcome user in chat with name
   socket.on('name', name => {
+
+    log.debug(`EVENT: name, MSG: Triggered by - ${name}`);
+
     // Save the username and join timestamp
     socket.meta = {
       username: name,
@@ -31,6 +37,9 @@ io.on('connection', function(socket) {
 
     //New message
     socket.on('msg', msg => {
+
+      log.debug(`EVENT: msg, MSG: Triggered by - ${socket.meta.username} MSG - ${msg}`);
+
       const timestamp = Date.now();
       // Send the message to all users
       io.emit('msg', {
@@ -42,6 +51,9 @@ io.on('connection', function(socket) {
 
     // Handle disconnect
     socket.on('disconnect', reason => {
+
+      log.debug(`EVENT: disconnect, MSG: Triggered by - ${socket.meta.username} MSG - User has been disconnected from the live connection`);
+
       const timestamp = Date.now();
       // Emit a leave event
       io.emit('leave', {
