@@ -14,9 +14,15 @@ log.info('simple-chat is starting...');
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
 io.on('connection', function(socket) {
+
+  log.debug(`New user connected from IP Address: ${socket.request.connection.remoteAddress}`);
+
   // Prompt user for username clientside
   // Welcome user in chat with name
   socket.on('name', name => {
+
+    log.debug(`User from ip address: ${socket.request.connection.remoteAddress} assigned a name: ${name}`);
+
     // Save the username and join timestamp
     socket.meta = {
       username: name,
@@ -31,6 +37,9 @@ io.on('connection', function(socket) {
 
     //New message
     socket.on('msg', msg => {
+
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has sent a new message: ${msg}`);
+
       const timestamp = Date.now();
       // Send the message to all users
       io.emit('msg', {
@@ -42,6 +51,9 @@ io.on('connection', function(socket) {
 
     // Handle disconnect
     socket.on('disconnect', reason => {
+
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has been disconnected. Reason: ${reason}`);
+
       const timestamp = Date.now();
       // Emit a leave event
       io.emit('leave', {
