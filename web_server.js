@@ -15,13 +15,13 @@ app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
 io.on('connection', function(socket) {
 
-  log.debug('EVENT: connection, MSG: new connection has been established');
+  log.debug(`New user connected from IP Address: ${socket.request.connection.remoteAddress}`);
 
   // Prompt user for username clientside
   // Welcome user in chat with name
   socket.on('name', name => {
 
-    log.debug(`EVENT: name, MSG: Triggered by - ${name}`);
+    log.debug(`User from ip address: ${socket.request.connection.remoteAddress} assigned a name: ${name}`);
 
     // Save the username and join timestamp
     socket.meta = {
@@ -38,7 +38,7 @@ io.on('connection', function(socket) {
     //New message
     socket.on('msg', msg => {
 
-      log.debug(`EVENT: msg, MSG: Triggered by - ${socket.meta.username} MSG - ${msg}`);
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has sent a new message`);
 
       const timestamp = Date.now();
       // Send the message to all users
@@ -52,7 +52,7 @@ io.on('connection', function(socket) {
     // Handle disconnect
     socket.on('disconnect', reason => {
 
-      log.debug(`EVENT: disconnect, MSG: Triggered by - ${socket.meta.username} MSG - User has been disconnected from the live connection`);
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has been disconnected`);
 
       const timestamp = Date.now();
       // Emit a leave event
