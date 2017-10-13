@@ -4,6 +4,12 @@ import * as io from 'socket.io-client';
 @Injectable()
 export class SocketService {
 
-  constructor() { }
+  private socket: io.Socket;
+
+  constructor() {
+    this.socket = io();
+  }
+
+  
 
 }
