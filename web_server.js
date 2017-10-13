@@ -10,17 +10,15 @@ const io = socketIO(server);
 
 log.info('simple-chat is starting...');
 
-// Exposes the folder frontend
+// Expose the frontend
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
-io.on('connection', function(socket) {
-
+io.on('connection', socket => {
   log.debug(`New user connected from IP Address: ${socket.request.connection.remoteAddress}`);
 
   // Prompt user for username clientside
   // Welcome user in chat with name
   socket.on('name', name => {
-
     log.debug(`User from ip address: ${socket.request.connection.remoteAddress} assigned a name: ${name}`);
 
     // Save the username and join timestamp
@@ -35,9 +33,8 @@ io.on('connection', function(socket) {
       time: socket.meta.joinedAt
     });
 
-    //New message
+    // New message
     socket.on('msg', msg => {
-
       log.debug(`${name} (${socket.request.connection.remoteAddress}) has sent a new message: ${msg}`);
 
       const timestamp = Date.now();
@@ -51,7 +48,6 @@ io.on('connection', function(socket) {
 
     // Handle disconnect
     socket.on('disconnect', reason => {
-
       log.debug(`${name} (${socket.request.connection.remoteAddress}) has been disconnected. Reason: ${reason}`);
 
       const timestamp = Date.now();
@@ -65,10 +61,5 @@ io.on('connection', function(socket) {
   });
 });
 
-server.on('error', error => {
-  log.err(`Error while starting the server`, error);
-});
-
-server.listen(process.env.PORT || 80, () => {
-  log.info(`Server is listening on port: ${server.address().port}`);
-});
+server.on('error', error => log.err(`Error while starting the server`, error));
+server.listen(process.env.PORT || 80, () => log.info(`Server is listening on port: ${server.address().port}`));
