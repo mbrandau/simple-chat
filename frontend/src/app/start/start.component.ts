@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocketService } from '../socket.service';
 
 @Component({
   selector: 'app-start',
@@ -6,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent implements OnInit {
-
+  
   submitted: boolean;
   // Data model which will be binded to the form
   user: string;
 
-  constructor() {
+  constructor(private socketService: SocketService) {
     this.submitted = false;
     this.user = null;
   }

@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node web_server.js",
-    "build": "cd frontend && npm run build --prod",
-    "build-dev": "cd frontend && ng build --prod -w"
+    "build": "cd frontend && npm run build",
+    "build-dev": "cd frontend && npm run build-dev"
   },
   "repository": {
     "type": "git",
