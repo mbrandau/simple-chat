@@ -3,6 +3,7 @@ const http = require('http');
 const socketIO = require('socket.io');
 const path = require('path');
 const log = require('beautiful-logs')();
+const prettyMs = require('pretty-ms');
 
 const app = express();
 const server = http.Server(app);
@@ -50,7 +51,7 @@ io.on('connection', socket => {
     socket.on('disconnect', reason => {
       const timestamp = Date.now();
       const userConnectionDuration = timestamp - socket.meta.joinedAt;
-      log.debug(`${name} (${socket.request.connection.remoteAddress}) has been disconnected after ${userConnectionDuration}. Reason: ${reason}`);
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has been disconnected after ${prettyMs(userConnectionDuration)}. Reason: ${reason}`);
 
       // Emit a leave event
       io.emit('leave', {
