@@ -7,7 +7,7 @@ import { SocketService } from '../socket.service';
   styleUrls: ['./start.component.scss']
 })
 export class StartComponent implements OnInit {
-  
+
   submitted: boolean;
   // Data model which will be binded to the form
   user: string;
@@ -22,9 +22,12 @@ export class StartComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: Form submit
     this.submitted = true;
-    console.log(this.user);
+    this.socketService.login(this.user).subscribe(
+      result => console.log(result),
+      error => console.log('Error logging in'),
+      () => console.log(this.user)
+    );
   }
 
 }
