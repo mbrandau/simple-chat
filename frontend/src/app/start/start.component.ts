@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-start',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartComponent implements OnInit {
 
-  constructor() { }
+  submitted: boolean;
+  // Data model which will be binded to the form
+  user: User;
+
+  constructor() {
+    this.submitted = false;
+    this.user = new User();
+  }
 
   ngOnInit() {
+
+  }
+
+  onSubmit() {
+    // TODO: Form submit
+    this.submitted = true;
+    console.log(this.user);
   }
 
 }
