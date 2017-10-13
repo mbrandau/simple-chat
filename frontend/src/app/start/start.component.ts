@@ -8,9 +8,26 @@ import { SocketService } from '../socket.service';
 })
 export class StartComponent implements OnInit {
 
-  constructor(private socketService: SocketService) { }
+  submitted: boolean;
+  // Data model which will be binded to the form
+  user: string;
+
+  constructor(private socketService: SocketService) {
+    this.submitted = false;
+    this.user = null;
+  }
 
   ngOnInit() {
+
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.socketService.login(this.user).subscribe(
+      result => console.log(result),
+      error => console.log('Error logging in'),
+      () => console.log(this.user)
+    );
   }
 
 }
