@@ -2,7 +2,7 @@
   <h1><small>Welcome to</small><br><b>simple-chat</b></h1>
   <form (ngSubmit)="onSubmit()" class="mt-4" #startForm="ngForm">
     <div class="input-group">
-      <input class="form-control" type="text" name="username" pattern="[A-Za-z0-9]{4,}" placeholder="Enter your username" [(ngModel)]="user.username" #username="ngModel" required>
+      <input class="form-control" type="text" name="username" pattern="[A-Za-z0-9]{4,}" placeholder="Enter your username" [(ngModel)]="user" #username="ngModel" required>
       <span class="input-group-btn">
         <button class="btn btn-success" type="submit" [disabled]="!startForm.form.valid">Start chatting!</button>
       </span>
