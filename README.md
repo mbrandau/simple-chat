@@ -1,4 +1,9 @@
 # simple-chat
+[![](https://img.shields.io/github/issues-raw/mbrandau/simple-chat.svg)](https://github.com/mbrandau/simple-chat/issues)
+[![](https://img.shields.io/github/issues-closed-raw/mbrandau/simple-chat.svg)](https://github.com/mbrandau/simple-chat/issues)
+[![](https://img.shields.io/github/issues-pr-raw/mbrandau/simple-chat.svg)](https://github.com/mbrandau/simple-chat/pulls)
+[![](https://img.shields.io/github/issues-pr-closed-raw/mbrandau/simple-chat.svg)](https://github.com/mbrandau/simple-chat/pulls)
+
 A simple chat app using Angular 4 and socket.io
 
 ## Deploying the app

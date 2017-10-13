@@ -10,13 +10,17 @@ const io = socketIO(server);
 
 log.info('simple-chat is starting...');
 
-// Exposes the folder frontend
+// Expose the frontend
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
-io.on('connection', function(socket) {
+io.on('connection', socket => {
+  log.debug(`New user connected from IP Address: ${socket.request.connection.remoteAddress}`);
+
   // Prompt user for username clientside
   // Welcome user in chat with name
   socket.on('name', name => {
+    log.debug(`User from ip address: ${socket.request.connection.remoteAddress} assigned a name: ${name}`);
+
     // Save the username and join timestamp
     socket.meta = {
       username: name,
@@ -29,11 +33,10 @@ io.on('connection', function(socket) {
       time: socket.meta.joinedAt
     });
 
-    //Log user join event
-    log.debug("User: " + socket.meta.username + " has joined.")
-
-    //New message
+    // New message
     socket.on('msg', msg => {
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has sent a new message: ${msg}`);
+
       const timestamp = Date.now();
       // Send the message to all users
       io.emit('msg', {
@@ -41,29 +44,23 @@ io.on('connection', function(socket) {
         msg: msg,
         time: timestamp
       });
-      //Log user send message event
-      log.debug("User: " + socket.meta.username + " has send a message: " + msg);
     });
 
     // Handle disconnect
     socket.on('disconnect', reason => {
       const timestamp = Date.now();
+      const userConnectionDuration = timestamp - socket.meta.joinedAt;
+      log.debug(`${name} (${socket.request.connection.remoteAddress}) has been disconnected after ${userConnectionDuration}. Reason: ${reason}`);
+
       // Emit a leave event
       io.emit('leave', {
         user: socket.meta.username,
         time: timestamp,
-        duration: timestamp - socket.meta.joinedAt
+        duration: userConnectionDuration
       });
-      //Log user leave event
-      log.debug("User: " + socket.meta.username + " has left after " + (timestamp - socket.meta.joinedAt));
     });
   });
 });
 
-server.on('error', error => {
-  log.err(`Error while starting the server`, error);
-});
-
-server.listen(process.env.PORT || 80, () => {
-  log.info(`Server is listening on port: ${server.address().port}`);
-});
+server.on('error', error => log.err(`Error while starting the server`, error));
+server.listen(process.env.PORT || 80, () => log.info(`Server is listening on port: ${server.address().port}`));
