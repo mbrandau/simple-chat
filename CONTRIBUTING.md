@@ -1,4 +1,3 @@
-
 # Contribution Guide
 
 Below are the instructions for making changes to simple-chat. There are a few important guidelines we'd wish for you to follow.
