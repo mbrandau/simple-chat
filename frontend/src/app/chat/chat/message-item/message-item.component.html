@@ -1,0 +1,15 @@
+<div class="col-md-10">
+  <div class="Card">
+      <div class="Card__body flex-row justify-content-between" >
+          <div>
+              <div class="mb-3">
+                  <strong>{{message.sender.firstName}} {{message.sender.lastName}}</strong> {{message.date |  date:'mediumDate'}}
+              </div>
+              <div class="helper-text">{{message?.data}}</div>
+          </div>
+          <div>
+              <i class="zmdi zmdi-flag"></i>
+          </div>
+      </div>
+  </div>
+</div>

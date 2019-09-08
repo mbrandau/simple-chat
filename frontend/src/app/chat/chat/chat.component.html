@@ -1,0 +1,8 @@
+<div class="my-4">
+	<div class="tab-content-area-active default-dropdown">
+		<div class="row" *ngFor="let message of messages">
+			<app-message-item *ngIf="message.senderId" [isMine]="message.senderId && message.senderId === user.userId" [message]="message"></app-message-item>
+		</div>
+	</div>
+</div>
+
